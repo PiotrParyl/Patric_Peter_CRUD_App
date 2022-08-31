@@ -29,4 +29,5 @@ npm start
 ```
 następnie w przeglądarce wchodzimy na 127.0.0.1:3000
 i naszym oczom powinna pojawić sie oootaka strona:
+![image](https://user-images.githubusercontent.com/44020188/187666653-6570dd58-b91a-4f8c-8916-85e0d1b749ab.png)
 
