@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  margin: 35px auto 0;
+}
+
+.header h1 {
+  color: #efefef;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 2px;
+}

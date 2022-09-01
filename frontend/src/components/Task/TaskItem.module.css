@@ -1,0 +1,50 @@
+.task-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 25px;
+  margin: 3px 15px;
+  background-color: #666;
+  border-radius: 5px;
+}
+
+.task-content h5 {
+  color: orange;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.task-content p {
+  color: white;
+  margin-top: 5px;
+  font-size: 17px;
+}
+
+.task-buttons .btn-complete {
+  margin-right: 15px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 15px;
+  outline: 1px solid #3dad39;
+  color: #3dad39;
+  font-size: 16px;
+  opacity: 0.85;
+  transition: opacity 100ms ease-in;
+}
+
+.task-buttons .btn-delete {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 15px;
+  outline: 1px solid #ff2a2a;
+  color: #ff2a2a;
+  font-size: 16px;
+  opacity: 0.85;
+  transition: opacity 100ms ease-in;
+}
+
+.task-buttons .btn-complete:hover,
+.btn-delete:hover {
+  opacity: 1;
+}

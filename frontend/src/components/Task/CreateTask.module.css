@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  gap: 25px;
+  color: white;
+}
+
+.form label {
+  margin-bottom: 10px;
+}
+
+.form input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.form label,
+input {
+  display: block;
+  font-size: 17px;
+}
+
+.form input {
+  outline: 1px solid orange;
+  border: none;
+}
+
+.btn {
+  margin-left: auto;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  letter-spacing: 2px;
+  transition: background-color 100ms ease-in;
+}
+
+.form input:focus {
+  outline: 2px solid orange;
+}
+
+.btn:hover {
+  background-color: #e29100;
+}
