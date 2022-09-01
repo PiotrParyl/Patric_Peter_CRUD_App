@@ -29,11 +29,21 @@ export const App = () => {
     },
   ]);
 
+  const handleAddTask = (data) => {
+    const newTaskList = [...tasks]; // copy arr to prevent mutable state
+
+    newTaskList.push(data);
+
+    setTasks(newTaskList);
+
+    console.log(newTaskList);
+  };
+
   return (
     <Fragment>
       <Header />
       <main className={styles.main}>
-        <CreateTask />
+        <CreateTask handleAddTask={handleAddTask} listLength={tasks.length} />
         <TaskList taskList={tasks} />
       </main>
     </Fragment>
