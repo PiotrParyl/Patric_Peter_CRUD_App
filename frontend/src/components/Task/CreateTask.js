@@ -60,8 +60,8 @@ export const CreateTask = ({ addTask }) => {
         <div>
           <label htmlFor="title">Title</label>
           <input
-            className={titleErr && styles.err}
-            placeholder={titleErr && "Field required!"}
+            className={titleErr ? styles.err : null}
+            placeholder={titleErr ? "Field required!" : null}
             type="text"
             id={"title"}
             ref={inputTitle}
@@ -73,8 +73,8 @@ export const CreateTask = ({ addTask }) => {
         <div>
           <label htmlFor="description">Description</label>
           <input
-            className={descErr && styles.err}
-            placeholder={titleErr && "Field required!"}
+            className={descErr ? styles.err : null}
+            placeholder={descErr ? "Field required!" : null}
             type="text"
             id={"description"}
             ref={descName}
