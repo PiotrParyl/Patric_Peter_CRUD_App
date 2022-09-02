@@ -36,6 +36,14 @@ input {
   transition: background-color 100ms ease-in;
 }
 
+.err {
+  outline: 3px solid #fd3f3f !important;
+}
+
+.err::placeholder {
+  color: #fd3f3f;
+}
+
 .form input:focus {
   outline: 2px solid orange;
 }

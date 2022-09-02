@@ -17,7 +17,6 @@ export const TaskItem = ({ id, title, description, removeTask, editTask }) => {
   };
 
   const enableTaskEditingHandler = () => {
-    console.log(id);
     setIsEditing(true);
   };
 

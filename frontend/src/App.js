@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 
 import { Header } from "./components/Layout/Header";
 import { CreateTask } from "./components/Task/CreateTask";
@@ -29,6 +29,10 @@ export const App = () => {
     },
   ]);
 
+  useEffect(() => {
+    console.log("I will fetching data from DB soon :)");
+  }, []);
+
   const addTaskHandler = (data) => {
     const newTaskList = [...tasks]; // copy arr to prevent mutable state
 
@@ -51,8 +55,6 @@ export const App = () => {
     newTasksList[editingItemIndex].description = data.description;
 
     setTasks(newTasksList);
-    console.log(editingItemIndex);
-    console.log(data.id);
   };
 
   return (
