@@ -33,14 +33,14 @@ header h3 {
   color: white;
 }
 
-.inputs {
+.form {
   display: flex;
   flex-flow: column nowrap;
   gap: 15px;
   color: white;
 }
 
-.inputs input {
+.form input {
   width: 100%;
   padding: 5px;
   border-radius: 5px;
@@ -49,11 +49,7 @@ header h3 {
   margin-top: 5px;
 }
 
-footer {
-  width: 100%;
-}
-
-footer .btn {
+.btn {
   display: block;
   width: 33%;
   margin: 25px auto 0;
@@ -64,6 +60,6 @@ footer .btn {
   transition: opacity 100ms ease-in;
 }
 
-footer .btn:hover {
+.btn:hover {
   opacity: 1;
 }

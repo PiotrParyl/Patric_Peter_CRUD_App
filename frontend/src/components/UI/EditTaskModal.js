@@ -13,7 +13,9 @@ export const EditTaskModal = ({
   const titleRef = useRef(title);
   const descRef = useRef(description);
 
-  const getEditDataHandler = () => {
+  const getEditDataHandler = (e) => {
+    e.preventDefault();
+
     const editData = {
       id,
       title: titleRef.current.value,
@@ -31,7 +33,7 @@ export const EditTaskModal = ({
           <h3>Edit Task</h3>
         </header>
 
-        <div className={styles.inputs}>
+        <form className={styles.form} onSubmit={getEditDataHandler}>
           <div>
             <label htmlFor="title">Title</label>
             <input
@@ -51,13 +53,11 @@ export const EditTaskModal = ({
               ref={descRef}
             />
           </div>
-        </div>
 
-        <footer>
-          <CustomBtn className={styles.btn} onClick={getEditDataHandler}>
+          <CustomBtn className={styles.btn} type={"submit"}>
             Edit
           </CustomBtn>
-        </footer>
+        </form>
       </div>
     </Fragment>
   );
