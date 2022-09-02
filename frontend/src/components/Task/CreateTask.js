@@ -6,7 +6,7 @@ import { Card } from "../Layout/Card";
 import styles from "./CreateTask.module.css";
 
 export const CreateTask = ({ addTask }) => {
-  const inputName = useRef();
+  const inputTitle = useRef();
   const descName = useRef();
 
   const handleTaskData = (e) => {
@@ -14,11 +14,14 @@ export const CreateTask = ({ addTask }) => {
 
     const taskData = {
       id: `task_${nanoid()}`,
-      title: inputName.current.value.trim(),
+      title: inputTitle.current.value.trim(),
       description: descName.current.value.trim(),
     };
 
     addTask(taskData);
+
+    inputTitle.current.value = "";
+    descName.current.value = "";
   };
 
   return (
@@ -26,7 +29,7 @@ export const CreateTask = ({ addTask }) => {
       <form className={styles.form} onSubmit={handleTaskData}>
         <div>
           <label htmlFor="title">Title</label>
-          <input type="text" id={"title"} ref={inputName} />
+          <input type="text" id={"title"} ref={inputTitle} />
         </div>
 
         <div>
