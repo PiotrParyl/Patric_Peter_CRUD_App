@@ -8,43 +8,63 @@ import styles from "./App.module.css";
 export const App = () => {
   const [tasks, setTasks] = useState([
     {
-      id: "t0",
+      id: "task_demo_0",
       title: "Task1",
       description: "This is my first task",
     },
     {
-      id: "t1",
+      id: "task_demo_1",
       title: "Task2",
       description: "This is my second task",
     },
     {
-      id: "t2",
+      id: "task_demo_2",
       title: "Task3",
       description: "This is another task",
     },
     {
-      id: "t3",
+      id: "task_demo_3",
       title: "Task4",
       description: "One more task here",
     },
   ]);
 
-  const handleAddTask = (data) => {
+  const addTaskHandler = (data) => {
     const newTaskList = [...tasks]; // copy arr to prevent mutable state
 
     newTaskList.push(data);
 
     setTasks(newTaskList);
+  };
 
-    console.log(newTaskList);
+  const removeTaskHandler = (id) => {
+    let newTaskList = [...tasks];
+    newTaskList = newTaskList.filter((task) => task.id !== id);
+    setTasks(newTaskList);
+  };
+
+  const editTaskHandler = (data) => {
+    let newTasksList = [...tasks];
+    const editingItemIndex = newTasksList.findIndex((el) => el.id === data.id);
+
+    newTasksList[editingItemIndex].title = data.title;
+    newTasksList[editingItemIndex].description = data.description;
+
+    setTasks(newTasksList);
+    console.log(editingItemIndex);
+    console.log(data.id);
   };
 
   return (
     <Fragment>
       <Header />
       <main className={styles.main}>
-        <CreateTask handleAddTask={handleAddTask} listLength={tasks.length} />
-        <TaskList taskList={tasks} />
+        <CreateTask addTask={addTaskHandler} />
+        <TaskList
+          taskList={tasks}
+          removeTask={removeTaskHandler}
+          editTask={editTaskHandler}
+        />
       </main>
     </Fragment>
   );

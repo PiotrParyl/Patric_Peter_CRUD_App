@@ -1,0 +1,69 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  opacity: 0.65;
+  background-color: black;
+}
+
+.modal {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 25px;
+  position: fixed;
+  width: 50%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #555;
+  overflow: hidden;
+  padding: 60px 50px;
+  border-radius: 10px;
+  outline: 4px solid darkgoldenrod;
+}
+
+header h3 {
+  text-align: center;
+  font-size: 32px;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.inputs {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+  color: white;
+}
+
+.inputs input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  outline: 2px solid darkgoldenrod;
+  border: none;
+  margin-top: 5px;
+}
+
+footer {
+  width: 100%;
+}
+
+footer .btn {
+  display: block;
+  width: 33%;
+  margin: 25px auto 0;
+  font-size: 16px;
+  outline: 1px solid darkgoldenrod;
+  color: darkgoldenrod;
+  opacity: 0.85;
+  transition: opacity 100ms ease-in;
+}
+
+footer .btn:hover {
+  opacity: 1;
+}

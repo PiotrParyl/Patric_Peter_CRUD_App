@@ -1,16 +1,16 @@
-import { Card } from "../Layout/Card";
-import { CustomBtn } from "../UI/CustomBtn";
 import { TaskItem } from "./TaskItem";
-import styles from "./TaskItem.module.css";
 
-export const TaskList = ({ taskList }) => {
+export const TaskList = ({ taskList, removeTask, editTask }) => {
   return (
     <ul>
       {taskList.map((task) => (
         <TaskItem
-          key={task.id}
+          key={task.id} // react specific prop
+          id={task.id}
           title={task.title}
           description={task.description}
+          removeTask={removeTask}
+          editTask={editTask}
         />
       ))}
     </ul>

@@ -33,6 +33,18 @@
   transition: opacity 100ms ease-in;
 }
 
+.task-buttons .btn-edit {
+  margin-right: 15px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 15px;
+  outline: 1px solid darkgoldenrod;
+  color: darkgoldenrod;
+  font-size: 16px;
+  opacity: 0.85;
+  transition: opacity 100ms ease-in;
+}
+
 .task-buttons .btn-delete {
   padding: 7px 15px;
   border: none;
@@ -44,7 +56,16 @@
   transition: opacity 100ms ease-in;
 }
 
+.complete h5,
+.complete p {
+  color: #444;
+  opacity: 0.85;
+  text-decoration: line-through;
+  transition: all 450ms ease;
+}
+
 .task-buttons .btn-complete:hover,
+.btn-edit:hover,
 .btn-delete:hover {
   opacity: 1;
 }

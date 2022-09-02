@@ -1,10 +1,11 @@
 import { useRef } from "react";
+import { nanoid } from "nanoid";
 
 import { CustomBtn } from "../UI/CustomBtn";
 import { Card } from "../Layout/Card";
 import styles from "./CreateTask.module.css";
 
-export const CreateTask = ({ listLength, handleAddTask }) => {
+export const CreateTask = ({ addTask }) => {
   const inputName = useRef();
   const descName = useRef();
 
@@ -12,20 +13,20 @@ export const CreateTask = ({ listLength, handleAddTask }) => {
     e.preventDefault();
 
     const taskData = {
-      id: `t${listLength}`, // depends on tasks quantity t1, t2 ... tn
+      id: `task_${nanoid()}`,
       title: inputName.current.value.trim(),
       description: descName.current.value.trim(),
     };
 
-    handleAddTask(taskData);
+    addTask(taskData);
   };
 
   return (
     <Card>
       <form className={styles.form} onSubmit={handleTaskData}>
         <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" id={"name"} ref={inputName} />
+          <label htmlFor="title">Title</label>
+          <input type="text" id={"title"} ref={inputName} />
         </div>
 
         <div>
