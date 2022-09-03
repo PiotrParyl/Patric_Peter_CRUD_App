@@ -34,7 +34,11 @@ export const App = () => {
   }, []);
 
   const addTaskHandler = (data) => {
-    const newTaskList = [...tasks]; // copy arr to prevent mutable state
+    /** @param newTaskList copy data from "tasks" state to prevent mutating it (react specific)
+     *  @param setTasks    return new state forcing all components using that state to reload
+     *  */
+
+    const newTaskList = [...tasks];
 
     newTaskList.push(data);
 
