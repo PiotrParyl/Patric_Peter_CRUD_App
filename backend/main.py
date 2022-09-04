@@ -1,27 +1,15 @@
-from flask import Flask, request
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
-import db
-from sqlalchemy.orm import sessionmaker
 
-Session = sessionmaker(bind=db.engine)
-session = Session()
-
-
-
+db = SQLAlchemy()
+DB_NAME = "tododatabase.db"
 
 app = Flask(__name__)
-
-
-
-@app.route('/todo', methods = ['POST'])
-def todo():
-
-    task = request.get_json()
-    print()
-    return 'Done',201
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+db.init_app(app)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
+    db.create_all()
