@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import os
-=======
 from flask import Flask, request
 import db
 from sqlalchemy.orm import sessionmaker
@@ -12,16 +7,9 @@ Session = sessionmaker(bind=db.engine)
 session = Session()
 
 
->>>>>>> 53f2467 (create json endpoint)
 
-db = SQLAlchemy()
-DB_NAME = "tododatabase.db"
 
 app = Flask(__name__)
-<<<<<<< HEAD
-app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-db.init_app(app)
-=======
     
     
 @app.route('/create-task', methods = ['POST','GET'] )
@@ -58,9 +46,8 @@ def get_task():
 
     return dict(zip(id_list,tasks_list))
 
->>>>>>> 53f2467 (create json endpoint)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-    db.create_all()
+    
