@@ -10,38 +10,31 @@ export const CreateTask = ({ addTask }) => {
   const [descErr, setDescErr] = useState(false);
 
   const inputTitle = useRef();
-  const inputDesc = useRef();
+  const descName = useRef();
 
   const handleTaskData = (e) => {
-    e.preventDefault(); // prevent browser refresh
-
-    /**
-     * @param inputTitle.current.value user's title input
-     * @param inputDesc.current.value  user's description input
-     * @param nanoid()                 third party method - this creates random IDs
-     * @param addTask(taskData)        method from App.js file - that getting user's input data after certain logical operations inside this method (handleTaskData)
-     * */
+    e.preventDefault();
 
     if (!inputTitle.current.value) {
       setTitleErr(true);
     }
 
-    if (!inputDesc.current.value) {
+    if (!descName.current.value) {
       setDescErr(true);
     }
 
-    if (inputTitle.current.value && inputDesc.current.value) {
+    if (inputTitle.current.value && descName.current.value) {
       const taskData = {
-        id: `task_${nanoid()}`, // nanoid() -> third party method - this creates random IDs
+        id: `task_${nanoid()}`,
         title: inputTitle.current.value.trim(),
-        description: inputDesc.current.value.trim(),
+        description: descName.current.value.trim(),
       };
       addTask(taskData);
       setTitleErr(false);
       setDescErr(false);
 
       inputTitle.current.value = "";
-      inputDesc.current.value = "";
+      descName.current.value = "";
     }
   };
 
@@ -54,7 +47,7 @@ export const CreateTask = ({ addTask }) => {
   };
 
   const descErrHandler = () => {
-    if (!inputDesc.current.value) {
+    if (!descName.current.value) {
       setDescErr(true);
     } else {
       setDescErr(false);
@@ -63,7 +56,7 @@ export const CreateTask = ({ addTask }) => {
 
   return (
     <Card>
-      <form className={styles.form} onSubmit={handleTaskData} action={"/demo"}>
+      <form method="POST" className={styles.form} onSubmit={handleTaskData}>
         <div>
           <label htmlFor="title">Title</label>
           <input
@@ -84,7 +77,7 @@ export const CreateTask = ({ addTask }) => {
             placeholder={descErr ? "Field required!" : null}
             type="text"
             id={"description"}
-            ref={inputDesc}
+            ref={descName}
             autoComplete={"off"}
             onChange={descErrHandler}
           />
