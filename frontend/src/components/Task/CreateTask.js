@@ -56,7 +56,7 @@ export const CreateTask = ({ addTask }) => {
 
   return (
     <Card>
-      <form className={styles.form} onSubmit={handleTaskData}>
+      <form method="POST" className={styles.form} onSubmit={handleTaskData}>
         <div>
           <label htmlFor="title">Title</label>
           <input
