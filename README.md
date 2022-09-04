@@ -1,4 +1,4 @@
-# Siema, siema o tej porze każdy wypić może. 
+# Siema, siema o tej porze każdy wypić może.. 
 
 
 ## Siema Patryk.
