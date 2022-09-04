@@ -10,8 +10,8 @@ session = Session()
 
 
 app = Flask(__name__)
-    
-    
+
+
 @app.route('/create-task', methods = ['POST','GET'] )
 def todo():
 
@@ -31,7 +31,7 @@ def todo():
 def get_task():
     id_list = []
     tasks_list = []
-    
+
 
     my_data = session.query(db.todo)
 
@@ -41,8 +41,8 @@ def get_task():
         duet_list.append(chuj.description)
         tasks_list.append(duet_list)
         id_list.append(chuj.task_id)
-        
-        
+
+
 
     return dict(zip(id_list,tasks_list))
 
@@ -50,4 +50,3 @@ def get_task():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
