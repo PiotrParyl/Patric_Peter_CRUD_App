@@ -30,7 +30,7 @@ export const App = () => {
   ]);
 
   useEffect(() => {
-    console.log("I will fetching data from DB soon :)");
+    console.log("Backend connection soon");
   }, []);
 
   const addTaskHandler = (data) => {
