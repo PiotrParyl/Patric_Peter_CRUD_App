@@ -30,14 +30,29 @@ export const App = () => {
   ]);
 
   useEffect(() => {
-    console.log("Backend connection soon");
-  }, []);
+    /** @const url -> /create-task
+     *  @example data that is fetched via POST method should be dictionary with 3 key: value pairs */
+    const sendTasksData = async () => {
+      const url = "/create-task";
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tasks),
+      };
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        const msg = "Sending cart data failed!";
+        throw new Error(msg);
+      }
+    };
+
+    sendTasksData().catch((err) => {
+      throw new Error(err.message);
+    });
+  }, [tasks]);
 
   const addTaskHandler = (data) => {
-    /** @param newTaskList copy data from "tasks" state to prevent mutating it (react specific)
-     *  @param setTasks    return new state forcing all components using that state to reload
-     *  */
-
     const newTaskList = [...tasks];
 
     newTaskList.push(data);
