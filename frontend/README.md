@@ -14,7 +14,7 @@ const requestOptions = {
 };
 ```
 
-### First sending data via POST
+### First expecting data
 ```javascript
 [
   {
@@ -38,6 +38,30 @@ const requestOptions = {
     description: "One more task here",
   },
 ]
+```
+
+### Whole Function that represent sending data to backend 
+```javascript
+useEffect(() => {
+    const sendTasksData = async () => {
+      const url = "/create-task";
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tasks),
+      };
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        const msg = "Sending cart data failed!";
+        throw new Error(msg);
+      }
+    };
+
+    sendTasksData().catch((err) => {
+      throw new Error(err.message);
+    });
+  }, [tasks]);
 ```
 
 
