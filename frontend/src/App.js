@@ -49,6 +49,7 @@ export const App = () => {
     });
   }, []);
 
+  /* GET TASK LIST */
   useEffect(() => {
     const sendTasksData = async () => {
       const url = "/create-task";
