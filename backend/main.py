@@ -1,4 +1,3 @@
-from tabnanny import check
 from flask import Flask, request
 import db
 from sqlalchemy.orm import sessionmaker
@@ -11,21 +10,9 @@ session = Session()
 
 
 app = Flask(__name__)
-
-def get_data():
-    title_list = []
-    desc_list = []
-
-    my_data = session.query(db.todo)
-
-    for chuj in my_data:
-        title_list.append(chuj.title)
-        desc_list.append(chuj.description)
-
-    return dict(zip(title_list,desc_list))
-
     
-@app.route('/create-task', methods = ['POST'])
+    
+@app.route('/create-task', methods = ['POST','GET'] )
 def todo():
 
     if request.method == 'POST':
@@ -38,9 +25,26 @@ def todo():
         session.commit()
         return 'Done',201
 
-@app.route('/get-task')
+
+
+@app.route('/fetch-task-list')
 def get_task():
-    return get_data()
+    id_list = []
+    tasks_list = []
+    
+
+    my_data = session.query(db.todo)
+
+    for chuj in my_data:
+        duet_list = []
+        duet_list.append(chuj.title)
+        duet_list.append(chuj.description)
+        tasks_list.append(duet_list)
+        id_list.append(chuj.task_id)
+        
+        
+
+    return dict(zip(id_list,tasks_list))
 
 
 

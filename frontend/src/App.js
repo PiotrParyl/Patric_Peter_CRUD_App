@@ -27,7 +27,27 @@ export const App = () => {
       title: "Task4",
       description: "One more task here",
     },
+    /*==================== New fetch ====================*/
   ]);
+  useEffect(() => {
+    const fetchTaskList = async () => {
+      const url = "/fetch-task-list";
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const msg = "Fetching tasks data failed!";
+        throw new Error(msg);
+      }
+
+      const taskListData = await response.json();
+
+      setTasks(taskListData);
+    };
+
+    fetchTaskList().catch((err) => {
+      throw new Error(err.message);
+    });
+  }, []);
 
   useEffect(() => {
     /** @const url -> /create-task

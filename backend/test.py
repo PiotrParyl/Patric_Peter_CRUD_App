@@ -5,21 +5,27 @@ from db import session
 from sqlalchemy import update
 
 def get_data():
-    title_list = []
-    desc_list = []
+    id_list = []
+    tasks_list = []
+    
 
     my_data = session.query(db.todo)
 
     for chuj in my_data:
-        title_list.append(chuj.title)
-        desc_list.append(chuj.description)
+        duet_list = []
+        duet_list.append(chuj.title)
+        duet_list.append(chuj.description)
+        tasks_list.append(duet_list)
+        id_list.append(chuj.task_id)
+        
+        
 
-    return dict(zip(title_list,desc_list))
+    #return dict(zip(id_list,tasks_list))
 
  
 
 
-get_data()
+print(get_data())
 
 def select_data(id):
 
