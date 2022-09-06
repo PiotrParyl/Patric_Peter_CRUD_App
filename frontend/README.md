@@ -1,11 +1,18 @@
-## Frontend <--> Backend connection 
+# Frontend <--> Backend connection 
 
-### URL name
+## Endpoint names
+
+### GET
+```javascript
+"/fetch-task-list"
+```
+
+### POST 
 ```javascript
 "/create-task"
 ```
 
-### Request Options
+## Request Options (POST)
 ```javascript
 const requestOptions = {
   method: "POST",
@@ -14,7 +21,7 @@ const requestOptions = {
 };
 ```
 
-### First expecting data
+## First Expecting Data in DB
 ```javascript
 [
   {
@@ -40,10 +47,35 @@ const requestOptions = {
 ]
 ```
 
-### Whole Function that represent sending data to backend 
+## Async Functions
+
+### GET
 ```javascript
 useEffect(() => {
-    const sendTasksData = async () => {
+    const fetchTaskList = async () => {
+      const url = "/fetch-task-list";
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const msg = "Fetching tasks data failed!";
+        throw new Error(msg);
+      }
+
+      const taskListData = await response.json();
+
+      setTasks(taskListData);
+    };
+
+    fetchTaskList().catch((err) => {
+      throw new Error(err.message);
+    });
+  }, []);
+```
+
+### POST
+```javascript
+useEffect(() => {
+    const dispatchTaskList = async () => {
       const url = "/create-task";
       const requestOptions = {
         method: "POST",
@@ -58,14 +90,20 @@ useEffect(() => {
       }
     };
 
-    sendTasksData().catch((err) => {
+    /* PREVENT SEND DATA AFTER BROWSER REFRESH */
+    if (!IS_INIT) {
+      IS_INIT = true;
+      return;
+    }
+
+    dispatchTaskList().catch((err) => {
       throw new Error(err.message);
     });
   }, [tasks]);
 ```
 
 
-## Demo App View
+# Demo App View
 
 ![image](https://user-images.githubusercontent.com/99507865/188202217-7f63e7b4-dcd0-4699-bd22-53b9786b46ce.png)
 
