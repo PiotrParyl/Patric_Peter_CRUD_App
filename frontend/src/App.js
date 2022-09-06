@@ -31,6 +31,7 @@ export const App = () => {
     },
   ]);
 
+  /* GET TASK LIST */
   useEffect(() => {
     const fetchTaskList = async () => {
       const url = "/fetch-task-list";
