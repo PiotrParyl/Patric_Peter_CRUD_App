@@ -30,11 +30,30 @@ export const App = () => {
   ]);
 
   useEffect(() => {
-    console.log("I will fetching data from DB soon :)");
-  }, []);
+    /** @const url -> /create-task
+     *  @example data that is fetched via POST method should be dictionary with 3 key: value pairs */
+    const sendTasksData = async () => {
+      const url = "/create-task";
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tasks),
+      };
+      const response = await fetch(url, requestOptions);
+
+      if (!response.ok) {
+        const msg = "Sending cart data failed!";
+        throw new Error(msg);
+      }
+    };
+
+    sendTasksData().catch((err) => {
+      throw new Error(err.message);
+    });
+  }, [tasks]);
 
   const addTaskHandler = (data) => {
-    const newTaskList = [...tasks]; // copy arr to prevent mutable state
+    const newTaskList = [...tasks];
 
     newTaskList.push(data);
 
