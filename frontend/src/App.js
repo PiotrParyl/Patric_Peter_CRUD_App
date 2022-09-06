@@ -50,8 +50,6 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    /** @const url -> /create-task
-     *  @example data that is fetched via POST method should be dictionary with 3 key: value pairs */
     const sendTasksData = async () => {
       const url = "/create-task";
       const requestOptions = {
