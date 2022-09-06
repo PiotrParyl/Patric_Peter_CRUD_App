@@ -5,6 +5,8 @@ import { CreateTask } from "./components/Task/CreateTask";
 import { TaskList } from "./components/Task/TaskList";
 import styles from "./App.module.css";
 
+let IS_INIT = true;
+
 export const App = () => {
   const [tasks, setTasks] = useState([
     {
@@ -29,6 +31,7 @@ export const App = () => {
     },
     /*==================== New fetch ====================*/
   ]);
+  /* GET TASK LIST */
   useEffect(() => {
     const fetchTaskList = async () => {
       const url = "/fetch-task-list";
@@ -49,7 +52,7 @@ export const App = () => {
     });
   }, []);
 
-  /* GET TASK LIST */
+  /* POST TASK LIST */
   useEffect(() => {
     const sendTasksData = async () => {
       const url = "/create-task";
@@ -65,6 +68,11 @@ export const App = () => {
         throw new Error(msg);
       }
     };
+
+    if (IS_INIT) {
+      IS_INIT = false;
+      return;
+    }
 
     sendTasksData().catch((err) => {
       throw new Error(err.message);
