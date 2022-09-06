@@ -5,8 +5,6 @@ import { CreateTask } from "./components/Task/CreateTask";
 import { TaskList } from "./components/Task/TaskList";
 import styles from "./App.module.css";
 
-let IS_INIT = false;
-
 export const App = () => {
   const [tasks, setTasks] = useState([
     {
@@ -51,30 +49,10 @@ export const App = () => {
     });
   }, []);
 
-  /* GET TASK LIST */
   useEffect(() => {
-    const fetchTaskList = async () => {
-      const url = "/fetch-task-list";
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        const msg = "Fetching tasks data failed!";
-        throw new Error(msg);
-      }
-
-      const taskListData = await response.json();
-
-      setTasks(taskListData);
-    };
-
-    fetchTaskList().catch((err) => {
-      throw new Error(err.message);
-    });
-  }, []);
-
-  /* SEND TASK LIST */
-  useEffect(() => {
-    const dispatchTaskList = async () => {
+    /** @const url -> /create-task
+     *  @example data that is fetched via POST method should be dictionary with 3 key: value pairs */
+    const sendTasksData = async () => {
       const url = "/create-task";
       const requestOptions = {
         method: "POST",
@@ -89,13 +67,7 @@ export const App = () => {
       }
     };
 
-    /* PREVENT SEND DATA AFTER BROWSER REFRESH */
-    if (!IS_INIT) {
-      IS_INIT = true;
-      return;
-    }
-
-    dispatchTaskList().catch((err) => {
+    sendTasksData().catch((err) => {
       throw new Error(err.message);
     });
   }, [tasks]);
