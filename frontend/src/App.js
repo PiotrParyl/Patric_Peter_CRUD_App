@@ -31,26 +31,6 @@ export const App = () => {
     },
     /*==================== New fetch ====================*/
   ]);
-  /* GET TASK LIST */
-  useEffect(() => {
-    const fetchTaskList = async () => {
-      const url = "/fetch-task-list";
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        const msg = "Fetching tasks data failed!";
-        throw new Error(msg);
-      }
-
-      const taskListData = await response.json();
-
-      setTasks(taskListData);
-    };
-
-    fetchTaskList().catch((err) => {
-      throw new Error(err.message);
-    });
-  }, []);
 
   /* POST TASK LIST */
   useEffect(() => {
@@ -78,6 +58,33 @@ export const App = () => {
       throw new Error(err.message);
     });
   }, [tasks]);
+
+  /* GET TASK LIST */
+  useEffect(() => {
+    const fetchTaskList = async () => {
+      const url = "/fetch-task-list";
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        const msg = "Fetching tasks data failed!";
+        throw new Error(msg);
+      }
+
+      const taskListData = await response.json();
+
+      validateData(taskListData);
+
+      setTasks(taskListData);
+    };
+
+    const validateData = (data) => {
+      if (!data) {
+        fetchTaskList().catch((err) => {
+          throw new Error(err.message);
+        });
+      }
+    };
+  }, []);
 
   const addTaskHandler = (data) => {
     const newTaskList = [...tasks];
